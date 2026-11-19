@@ -14,8 +14,9 @@ func (s *Service) GetMouseJiggler(c *gin.Context) {
 	mouseJiggler := jiggler.GetJiggler()
 
 	data := &proto.GetMouseJigglerRsp{
-		Enabled: mouseJiggler.IsEnabled(),
-		Mode:    mouseJiggler.GetMode(),
+		Enabled:  mouseJiggler.IsEnabled(),
+		Mode:     mouseJiggler.GetMode(),
+		Schedule: mouseJiggler.GetSchedule(),
 	}
 
 	rsp.OkRspWithData(c, data)
@@ -42,6 +43,13 @@ func (s *Service) SetMouseJiggler(c *gin.Context) {
 	if err != nil {
 		rsp.ErrRsp(c, -2, "operation failed")
 		return
+	}
+
+	if req.Schedule != nil {
+		if err := mouseJiggler.SetSchedule(req.Schedule); err != nil {
+			rsp.ErrRsp(c, -3, "failed to save schedule")
+			return
+		}
 	}
 
 	rsp.OkRsp(c)

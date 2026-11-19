@@ -123,14 +123,22 @@ type SetSwapReq struct {
 	Size int64 `validate:"omitempty"` // unit: MB
 }
 
+type JigglerSchedule struct {
+	Days      []int  `json:"days"`
+	StartTime string `json:"startTime"`
+	EndTime   string `json:"endTime"`
+}
+
 type GetMouseJigglerRsp struct {
-	Enabled bool   `json:"enabled"`
-	Mode    string `json:"mode"`
+	Enabled  bool              `json:"enabled"`
+	Mode     string            `json:"mode"`
+	Schedule *JigglerSchedule  `json:"schedule"`
 }
 
 type SetMouseJigglerReq struct {
-	Enabled bool   `validate:"omitempty"`
-	Mode    string `validate:"omitempty"`
+	Enabled  bool              `validate:"omitempty"`
+	Mode     string            `validate:"omitempty"`
+	Schedule *JigglerSchedule  `json:"schedule,omitempty"`
 }
 
 type GetMdnsStateRsp struct {

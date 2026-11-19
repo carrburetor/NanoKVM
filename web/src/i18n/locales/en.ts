@@ -523,7 +523,18 @@ const en = {
           description: 'Prevent the remote host from sleeping',
           disable: 'Disable',
           absolute: 'Absolute Mode',
-          relative: 'Relative Mode'
+          relative: 'Relative Mode',
+          schedule: 'Schedule',
+          scheduleDescription: 'Jiggler runs only during these hours (device time)',
+          start: 'Start',
+          end: 'End',
+          mon: 'Mon',
+          tue: 'Tue',
+          wed: 'Wed',
+          thu: 'Thu',
+          fri: 'Fri',
+          sat: 'Sat',
+          sun: 'Sun'
         },
         mdns: {
           description: 'Enable mDNS discovery service',

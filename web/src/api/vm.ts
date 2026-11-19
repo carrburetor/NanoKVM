@@ -191,9 +191,15 @@ export function getMouseJiggler() {
   return http.get('/api/vm/mouse-jiggler');
 }
 
+export interface JigglerSchedule {
+  days: number[];
+  startTime: string;
+  endTime: string;
+}
+
 // set mouse jiggler
-export function setMouseJiggler(enabled: boolean, mode: string) {
-  return http.post('/api/vm/mouse-jiggler', { enabled, mode });
+export function setMouseJiggler(enabled: boolean, mode: string, schedule?: JigglerSchedule) {
+  return http.post('/api/vm/mouse-jiggler', { enabled, mode, schedule });
 }
 
 // get Hostname
